@@ -77,4 +77,24 @@ const updateUser = async (req, res) => {
   }
 };
 
-module.exports = { createUser, getUser, updateUser };
+const deleteUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const user = await prisma.user.findUnique({ where: { id } });
+    if (!user)
+      res.status(401).json('Unauthorization');
+
+    const deletedUser = await prisma.user.delete({
+      where: {
+        id
+      }
+    });
+    res.status(201).json('User deleted');
+
+  }catch(error){
+    return res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { createUser, getUser, updateUser, deleteUser };

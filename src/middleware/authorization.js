@@ -31,4 +31,3 @@ module.exports = async function(req, res, next) {
     res.status(401).send();
   }
 }
-// 66f8b661-363d-4c10-a43b-a5f3a706731d

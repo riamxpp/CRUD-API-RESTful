@@ -1,8 +1,8 @@
 const express = require('express');
+const { createUser } = require('../controllers/userController.js');
+
 const router = express.Router();
 
-router.get(('/'), (req, res) => {
-  res.json("Hellow world");
-});
+router.post('/register', createUser);
 
 module.exports = router;

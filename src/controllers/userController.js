@@ -43,4 +43,38 @@ const getUser = async (req, res) => {
   }
 };
 
-module.exports = { createUser, getUser };
+const updateUser = async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+    const { id } = req.params;
+
+    
+    const user = await prisma.user.findUnique({ where: { id }});
+    if(!user) 
+      return res.status(404).json('User not found');
+
+    if (user.id !== id)
+      return res.status(403).json('Forbidden: You cannot acess this resource');
+
+    let encryptPassword = password ? bcrypt.hashSync(password, 10): user.password;
+    const changedUser = await prisma.user.update({
+      where: {
+        id: user.id
+      },
+      data: {
+        name: name || user.name,
+        email: email || user.email,
+        password: encryptPassword,
+      }
+    });
+
+    const { password: _, ...userWithOutPassword } = changedUser;
+    
+    res.status(200).json(userWithOutPassword);
+
+  }catch(error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { createUser, getUser, updateUser };

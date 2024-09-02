@@ -1,0 +1,51 @@
+.main {  
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.formulario {
+  width: 30vw;
+}
+
+.main h1 {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.main a {
+  color: #f5efeb;
+}
+
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  background-color: #4CAF50; 
+  border: none; 
+  text-align: center; 
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px; 
+  margin: 4px 2px;  
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+  padding: .5rem  1.5rem;
+  background-color: #c8d9e6;
+  border-bottom: 3px solid #537397;
+  border-right: 3px solid #537397;
+  color: black;
+}
+
+.error {
+  color: #c8d9e6;
+}

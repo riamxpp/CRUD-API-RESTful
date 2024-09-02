@@ -2,6 +2,7 @@ import { useState } from "react";
 import Input from "../../components/Input/Input";
 import style from './Register.module.css';
 import { createUser } from "../../services/api";
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const [register, setRegister] = useState({
@@ -35,6 +36,7 @@ const Register = () => {
     <>
       <section className={style.main}>
         <h1>Cadastre-se</h1>
+        <p>Já possui conta ? então faça <Link to='/login'>login</Link></p>
         <form className={style.formulario} onSubmit={handleSubmit}>
           <Input 
             label='Nome' 

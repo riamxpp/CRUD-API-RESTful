@@ -1,19 +1,21 @@
 import style from './Login.module.css';
 import Input from '../../components/Input/Input';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';  
-import { login } from '../../services/api';
+import { loginUser } from '../../services/api';
+import { AuthContext } from '../../context/authContext';
 
 const Login = () => {
-  const [loginUser, setLoginUser] = useState({
+  const [userData, setUserData] = useState({
     email: '',
     password: '',
   });
   const [error, setError] = useState('');
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
   
   const handleInputChange = (name, value) => {
-    setLoginUser({ ...loginUser, [name]: value });
+    setUserData({ ...userData, [name]: value });
   }
 
   const handleSubmit = async (event) => {
@@ -21,9 +23,8 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await login(loginUser.email, loginUser.password);
-      localStorage.setItem('id', response.id);
-      localStorage.setItem('token', response.token);
+      const response = await loginUser(userData.email, userData.password);
+      login(response);
       navigate('/profile');
     }catch(error){
       setError('Erro ao fazer login! Verifique suas credenciais!');

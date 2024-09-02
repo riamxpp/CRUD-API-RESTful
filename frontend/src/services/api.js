@@ -19,7 +19,7 @@ export const createUser = async (name, email, password) => {
   }
 };
 
-export const login = async (email, password) => {
+export const loginUser = async (email, password) => {
   try {
     const response = await api.post('/login', {
       'email': email,

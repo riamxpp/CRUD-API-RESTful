@@ -25,7 +25,7 @@ const Login = () => {
     try {
       const response = await loginUser(userData.email, userData.password);
       login(response);
-      navigate('/profile');
+      navigate(`/profile/${response.id}`);
     }catch(error){
       setError('Erro ao fazer login! Verifique suas credenciais!');
     }

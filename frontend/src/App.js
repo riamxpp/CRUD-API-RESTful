@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path='/' Component={Register}/>
         <Route path='/login' Component={Login}/>
-        <Route path='/profile' Component={Profile }/>
+        <Route path='/profile/:id' Component={Profile }/>
       </Routes>
     </BrowserRouter>
   );

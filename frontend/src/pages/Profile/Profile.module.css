@@ -48,6 +48,17 @@
   gap: .3rem;
 }
 
+.input {
+  padding: .5rem 1rem;
+  border-radius: .3rem;
+  border: 1px solid #2f4156;
+  width: 100%;
+}
+
+.aviso {
+  font-size: .7rem;
+}
+
 .email {
   color: #2f4156ab;
 }

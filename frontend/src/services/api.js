@@ -45,3 +45,23 @@ export const getUser = async (id, token) => {
     throw error.response?.data || 'Error ao buscar informações.';
   }
 }
+
+export const updateUser = async (id, token, name, email, password) => {
+  try {
+    const response = await api.put(`/user/${id}`, 
+      {
+        'name': name, 
+        'email': email, 
+        'password': password
+      }, 
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+      }
+    });
+
+    return response.data;
+  }catch(error) {
+    throw error.response?.data || 'Error ao atualizar informações.'
+  }
+}

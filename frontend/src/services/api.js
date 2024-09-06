@@ -31,3 +31,17 @@ export const loginUser = async (email, password) => {
     throw error.response?.data || 'Error ao fazer login.'
   }
 };
+
+export const getUser = async (id, token) => {
+  try {
+    const response = await api.get(`/user/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    });
+
+    return response.data;
+  }catch(error) {
+    throw error.response?.data || 'Error ao buscar informações.';
+  }
+}
